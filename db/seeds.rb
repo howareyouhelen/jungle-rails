@@ -132,5 +132,48 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+puts "Rendering comments"
+
+Review.destroy_all
+
+product1 = Product.find_by name:'Red Bookshelf'
+product2 = Product.find_by name:'Optimal Sleeping Bed'
+
+product1.reviews.create({
+  user_id: '101',
+  description: 'The red is too bright, it hurts my eyes',
+  rating: 1
+})
+
+product1.reviews.create({
+  user_id: 308,
+  description: 'Those are oak wood, good deal',
+  rating: 5
+})
+
+product1.reviews.create({
+  user_id: 475,
+  description: 'Hard to dust, but looks good in my living room',
+  rating: 4
+})
+
+product2.reviews.create({
+  user_id: 9004,
+  description: 'I keep falling off, will return it',
+  rating: 2
+})
+
+product2.reviews.create({
+  user_id: 723,
+  description: 'So optimized, I like',
+  rating: 5
+})
+
+product2.reviews.create({
+  user_id: 689,
+  description: 'My back hurts from sleeping on this bed',
+  rating: 1
+})
+
 
 puts "DONE!"
