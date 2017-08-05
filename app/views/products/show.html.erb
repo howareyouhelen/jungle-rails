@@ -2,6 +2,9 @@
 
   <header class="page-header">
     <h1><%= link_to @product.category.name, @product.category %> &raquo; <%= @product.name %></h1>
+    <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
   </header>
 
   <article class="product-detail">
@@ -27,19 +30,45 @@
       </div>
     </div>
 
-    <div class="col-sm-8">
+  <div class="row">
+    <div class="col-sm-4">
       <h2>Comments</h2>
-      <% @product.reviews.each do |review| %>
+      <% @product.reviews.reverse_each do |review| %>
       <dl class="dl-horizontal">
         <dt>User</dt>
-        <dd><%= review.user_id %></dd>
+        <dd><%= review.user.first_name %></dd>
         <dt>Description</dt>
         <dd><%= review.description %></dd>
         <dt>Rating</dt>
         <dd><%= review.rating %></dd>
+      <% if current_user == review.user %>
+         <dd><%= link_to 'Destroy', review_path(review.id), method: :delete, data:{ confirm: 'Are you sure?'} %></td>
+      <% end %>
       </dl>
       <% end %>
+      
     </div>
+
+    <% if current_user %>
+    <div class="col-sm-8">
+      <h2>Review the Product</h2>
+        <%= form_for([@product, Review.new]) do |form| %>
+      <div class="field">
+        <%= form.label(:rating) %>
+        <%= form.select(:rating, options_for_select([['0'], ['1'], ['2'], ['3'], ['4'], ['5']])) %>
+      </div>
+      <div class="field">
+        <%= form.label(:description) %>
+        <%= form.text_area(:description, size: "30x10") %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+      <% end %>
+    </div>
+    <% end %>
+  </div>
 
   </article>
 

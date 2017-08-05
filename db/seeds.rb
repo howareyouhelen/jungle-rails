@@ -21,6 +21,16 @@ end
 
 # Let's do this ...
 
+## USERS
+puts "Creating User"
+
+user1 = User.create!({
+  first_name: "Tom",
+  last_name: "Hanks",
+  email: "tomhanks@example.com",
+  password_digest: "123"
+})
+
 ## CATEGORIES
 
 puts "Finding or Creating Categories ..."
@@ -140,37 +150,37 @@ product1 = Product.find_by name:'Red Bookshelf'
 product2 = Product.find_by name:'Optimal Sleeping Bed'
 
 product1.reviews.create({
-  user_id: '101',
+  user_id: 1,
   description: 'The red is too bright, it hurts my eyes',
   rating: 1
 })
 
 product1.reviews.create({
-  user_id: 308,
+  user_id: 1,
   description: 'Those are oak wood, good deal',
   rating: 5
 })
 
 product1.reviews.create({
-  user_id: 475,
+  user_id: 1,
   description: 'Hard to dust, but looks good in my living room',
   rating: 4
 })
 
 product2.reviews.create({
-  user_id: 9004,
+  user_id: 1,
   description: 'I keep falling off, will return it',
   rating: 2
 })
 
 product2.reviews.create({
-  user_id: 723,
+  user_id: 1,
   description: 'So optimized, I like',
   rating: 5
 })
 
 product2.reviews.create({
-  user_id: 689,
+  user_id: 1,
   description: 'My back hurts from sleeping on this bed',
   rating: 1
 })
