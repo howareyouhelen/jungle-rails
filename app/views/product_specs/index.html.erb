@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Product Specs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @product_specs.each do |product_spec| %>
+      <tr>
+        <td><%= link_to 'Show', product_spec %></td>
+        <td><%= link_to 'Edit', edit_product_spec_path(product_spec) %></td>
+        <td><%= link_to 'Destroy', product_spec, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Product spec', new_product_spec_path %>
