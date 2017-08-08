@@ -28,7 +28,7 @@ user1 = User.create!({
   first_name: "Tom",
   last_name: "Hanks",
   email: "tomhanks@example.com",
-  password_digest: "123"
+  password_digest: "123",
   password_confirmation: "123"
 })
 
