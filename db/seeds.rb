@@ -29,6 +29,7 @@ user1 = User.create!({
   last_name: "Hanks",
   email: "tomhanks@example.com",
   password_digest: "123"
+  password_confirmation: "123"
 })
 
 ## CATEGORIES
