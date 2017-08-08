@@ -33,7 +33,7 @@ RSpec.describe Product, type: :model do
     end
 
     it "product category must be present" do
-      expect(@product).to be_valid
+      expect(@category).to be_valid
       expect(@badproduct.errors.messages[:category]).to include("can't be blank")
     end 
 
